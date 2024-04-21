@@ -1,17 +1,17 @@
-from flask import Flask, jsonify
+from flask import Flask
+import os
 
 app = Flask(__name__)
 
 @app.route('/home', methods=['GET'])
-def return_server_id():
-    response = jsonify({
-        "message" : "Hello from Server: [ID]", "status" : "successful"
-    })
-    return response
+def home():
+    server_id = os.environ.get('SERVER_ID', 'Unknown')
+    return f'Hello from Server: {server_id}\n'
 
-@app.route('/hearbeat', methods=['GET'])
+@app.route('/heartbeat', methods=['GET'])
 def heartbeat():
+    # Sends empty response with a valid response code (200 OK)
     return '', 200
 
-if __name__ == "__main__":
-    app.run()
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)

@@ -1,31 +1,31 @@
 services:
 
   flask_server1:
-    image: flask-server-image
+    image: flask-server-image1
     build: 
-        context: ./server
-        dockerfile: dockerfile
+        context: server
+        dockerfile: Dockerfile
     container_name: flask-server1-container
     ports:
       - "5001:5000"
     restart: on-failure
 
   flask_server2:
-    image: flask-server-image
+    image: flask-server-image2
     build: 
-        context: ./server
-        dockerfile: dockerfile
+        context: server
+        dockerfile: Dockerfile
     container_name: flask-server2-container
     ports:
       - "5002:5000"
     restart: on-failure
 
   flask_server3:
-    image: flask-server-image
+    image: flask-server-image3
     build: 
-        context: ./server
-        dockerfile: dockerfile
-    container_name: flask-server2-container
+        context: server
+        dockerfile: Dockerfile
+    container_name: flask-server3-container
     ports:
       - "5003:5000"
     restart: on-failure
