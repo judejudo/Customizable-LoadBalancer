@@ -10,13 +10,29 @@ class ConsistentHashMap:
         return (server_id + replica_id + 2 * replica_id + 25) % self.num_slots
 
     def add_virtual_server(self, server_id):
-        # Add virtual servers for each server container
         for replica_id in range(self.num_slots):
             slot = self.hash_function_virtual_server(server_id, replica_id)
+            original_slot = slot  # Keep track of the original slot for checking loop completion
             while self.hash_map[slot] is not None:
-                # Apply linear probing in case of collision
                 slot = (slot + 1) % self.num_slots
-            self.hash_map[slot] = server_id
+            # Apply linear probing in case of collision
+             
+            # Break if we've looped through all slots without finding an empty one
+                if slot == original_slot:
+                    break
+                
+        # If an empty slot is found, add the virtual server
+            if self.hash_map[slot] is None:
+                self.hash_map[slot] = server_id
+            
+    # Add virtual servers for each server container
+    
+     
+
+        
+    # Add virtual servers for each server container
+    
+
 
     def map_request_to_server(self, request_id):
         slot = self.hash_function_request(request_id)
