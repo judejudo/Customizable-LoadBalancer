@@ -3,7 +3,7 @@ services:
   flask_server1:
     image: flask-server-image1
     build: 
-        context: server
+        context: ./server
         dockerfile: Dockerfile
     container_name: flask-server1-container
     ports:
@@ -13,7 +13,7 @@ services:
   flask_server2:
     image: flask-server-image2
     build: 
-        context: server
+        context: ./server
         dockerfile: Dockerfile
     container_name: flask-server2-container
     ports:
@@ -23,9 +23,19 @@ services:
   flask_server3:
     image: flask-server-image3
     build: 
-        context: server
+        context: ./server
         dockerfile: Dockerfile
     container_name: flask-server3-container
     ports:
       - "5003:5000"
+    restart: on-failure
+
+  load_balancer:
+    image: load-balancer-image
+    build:
+        context: ./load_balancer
+        dockerfile: Dockerfile
+    container_name: load-balancer-container
+    ports:
+      - "5000:5000"
     restart: on-failure
