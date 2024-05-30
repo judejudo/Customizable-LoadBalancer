@@ -1,6 +1,5 @@
-# import sys
+import sys
 
-# sys.path.append('..')
-from load_balancer import test_module
+sys.path.append('..')
+from load_balancer.load_balancer import LoadBalancer
 
-print(test_module.add(1,2))
