@@ -199,11 +199,11 @@ Customizable-LoadBalancer/
 
 ### Experiment 1: Load Distribution
 
-- Launch 10,000 asynchronous requests on 3 server containers.
+- Launch 30,000 asynchronous requests on 3 server containers.
 - Record the number of requests handled by each server and plot a bar chart.
 - Expected Outcome: Even distribution of load among server instances.
 
-![image](https://github.com/nguthiru/Customizable-load-balancer/assets/65071563/4dd71147-b598-42a7-94d0-7633673374da)
+![image](https://github.com/user-attachments/assets/73a86595-ecfe-4fda-95b8-f893fe5b98b3)
 
 
 
@@ -212,27 +212,28 @@ Customizable-LoadBalancer/
 - Increment the number of server containers from 2 to 6 (launching 10,000 requests each time).
 - Plot a line chart showing the average load of the servers at each run.
 - Expected Outcome: Efficient scaling with even load distribution as server instances increase.
-![image](https://github.com/nguthiru/Customizable-load-balancer/assets/65071563/23d841b0-bdba-46a0-8081-cbdeffd12231)
+![image](https://github.com/user-attachments/assets/154fdbaf-fd7a-4a07-87d8-753e258d4916)
 
 
 ### Experiment 3: Failure Recovery
 
-- Test load balancer endpoints and simulate server failures.
+- Test load balancer endpoints until server failure is achieved.
 - Ensure the load balancer spawns new instances to handle the load and maintain the specified number of replicas.
 #### Results
-![image](https://github.com/nguthiru/Customizable-load-balancer/assets/65071563/ea80a5f6-2081-45c9-b1f2-7c91d355efb7)
+![image](https://github.com/user-attachments/assets/528a7c4f-ec09-4b02-b437-a0fee293420f)
+
 <br>
-<sup>Containers  with the prefix 'emergency_' are spawned on failure of a replica.</sup>
-- On failure of 'S2' and 'S4' replica 'emergency_58' and 'emergency_43' are spawned
+Containers  with the prefix 'emergency_' are spawned on failure of a replica.
+
+- On failure of a server during a test run with 40000 requests, 'emergency_52' and 'emergency_11' were spawned to handle requests
 
 ### Experiment 4: Hash Function Modification
 
 - Modified the hash function: i % 512(number) of slots.
 - Repeat experiments 1 and 2, analyzing the impact on load distribution and scalability.
 - #### Experiment 1 Results:
-  ![image](https://github.com/nguthiru/Customizable-load-balancer/assets/65071563/37fe90b7-d576-4410-a0a6-e067ff4d67d2)
+![image](https://github.com/user-attachments/assets/73a86595-ecfe-4fda-95b8-f893fe5b98b3)
 - #### Experiment 2 Results:
-  ![image](https://github.com/nguthiru/Customizable-load-balancer/assets/65071563/2fd094d2-4883-4b0d-a732-06be19a3ee14)
-
+![image](https://github.com/user-attachments/assets/154fdbaf-fd7a-4a07-87d8-753e258d4916)
 
 
