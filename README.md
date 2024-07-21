@@ -14,6 +14,7 @@ This project is a customizable load balancer built using Flask, Docker, and Dock
 4. [Running the Project](#running-the-project)
 5. [Testing the Project](#testing-the-project)
 6. [Project Structure](#project-structure)
+7. [Performance Analysis](#performance-analysis)
 
 ## Prerequisites
 
