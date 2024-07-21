@@ -16,6 +16,7 @@ This project is a customizable load balancer built using Flask, Docker, and Dock
 6. [Project Structure](#project-structure)
 7. [Performance Analysis](#performance-analysis)
 
+
 ## Prerequisites
 
 Before you begin, ensure you have the following installed on your machine:
@@ -31,6 +32,7 @@ Follow these steps to install and set up the project:
 
     ```bash
     git clone https://github.com/judejudo/Customizable-LoadBalancer.git
+
     cd Customizable-LoadBalancer
     ```
 
