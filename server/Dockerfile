@@ -1,4 +1,4 @@
-FROM python:3.12-slim
+FROM python:3.11-slim
 
 WORKDIR /server
 
@@ -7,5 +7,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-# Modify the CMD to include --host=0.0.0.0
-CMD flask run --host=0.0.0.0 -p 5000
+CMD python app.py
