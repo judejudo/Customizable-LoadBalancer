@@ -1,12 +1,26 @@
+# <<<<<<< master
+import os
+import sys
+# =======
 from flask import Flask
 from uhashring import HashRing
 import os
 import logging
 
 logging.basicConfig(level=logging.INFO)
+# >>>>>>> master
 
-app = Flask(__name__)
+sys.path.append('..')
+from load_balancer.load_balancer import LoadBalancer
+# Print the absolute path to the current file (app.py)
+print(f"Absolute path to app.py: {os.path.abspath(__file__)}")
 
+# <<<<<<< master
+
+# if __name__ == '__main__':
+#     lb = LoadBalancer()
+#     lb.run()
+# =======
 #Define route for home endpoint
 @app.route('/home', methods=['GET'])
 def home():
@@ -23,3 +37,4 @@ def heartbeat():
 if __name__ == '__main__':
     #Run the application on all available network intefaces, port 5000
     app.run(host='0.0.0.0', port=5000)
+# >>>>>>> master
