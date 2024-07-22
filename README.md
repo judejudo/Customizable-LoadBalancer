@@ -14,6 +14,8 @@ This project is a customizable load balancer built using Flask, Docker, and Dock
 4. [Running the Project](#running-the-project)
 5. [Testing the Project](#testing-the-project)
 6. [Project Structure](#project-structure)
+7. [Performance Analysis](#performance-analysis)
+
 
 ## Prerequisites
 
@@ -29,7 +31,8 @@ Follow these steps to install and set up the project:
 1. **Clone the Repository:**
 
     ```bash
-    git clone https://github.com/your-username/Customizable-LoadBalancer.git
+    git clone https://github.com/judejudo/Customizable-LoadBalancer.git
+
     cd Customizable-LoadBalancer
     ```
 
@@ -193,5 +196,46 @@ Customizable-LoadBalancer/
 │   ├── requirements.txt        # Python dependencies
 │   └── app.py                  # Flask application
 ```
+
+## Performance Analysis
+
+### Experiment 1: Load Distribution
+
+- Launch 30,000 asynchronous requests on 3 server containers.
+- Record the number of requests handled by each server and plot a bar chart.
+- Expected Outcome: Even distribution of load among server instances.
+
+![image](https://github.com/user-attachments/assets/73a86595-ecfe-4fda-95b8-f893fe5b98b3)
+
+
+
+### Experiment 2: Scalability
+
+- Increment the number of server containers from 2 to 6 (launching 10,000 requests each time).
+- Plot a line chart showing the average load of the servers at each run.
+- Expected Outcome: Efficient scaling with even load distribution as server instances increase.
+![image](https://github.com/user-attachments/assets/154fdbaf-fd7a-4a07-87d8-753e258d4916)
+
+
+### Experiment 3: Failure Recovery
+
+- Test load balancer endpoints until server failure is achieved.
+- Ensure the load balancer spawns new instances to handle the load and maintain the specified number of replicas.
+#### Results
+![image](https://github.com/user-attachments/assets/528a7c4f-ec09-4b02-b437-a0fee293420f)
+
+<br>
+Containers  with the prefix 'emergency_' are spawned on failure of a replica.
+
+- On failure of a server during a test run with 40000 requests, 'emergency_52' and 'emergency_11' were spawned to handle requests
+
+### Experiment 4: Hash Function Modification
+
+- Modified the hash function: i % 512(number) of slots.
+- Repeat experiments 1 and 2, analyzing the impact on load distribution and scalability.
+- #### Experiment 1 Results:
+![image](https://github.com/user-attachments/assets/73a86595-ecfe-4fda-95b8-f893fe5b98b3)
+- #### Experiment 2 Results:
+![image](https://github.com/user-attachments/assets/154fdbaf-fd7a-4a07-87d8-753e258d4916)
 
 
